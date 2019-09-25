@@ -7,4 +7,4 @@ I created this repository and READMe as an exercise for GEO 712, a graduate-leve
 
 # Cloning to Desktop
 
-I have no cloned this file and launched in my desktop. I am now able to make edits, like adding this paragraphs, in R Studio.
+I have now cloned this file and launched in my desktop. I am now able to make edits, like adding this paragraphs, in R Studio.
