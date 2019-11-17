@@ -1,0 +1,12 @@
+"0","```r
+library(tidyverse)
+library(sf)
+library(areal)
+library(readr)
+library(dplyr)
+library(ggthemes)
+library(ggmap)
+library(plotly)
+library(gdistance)
+library(foreign)
+```"

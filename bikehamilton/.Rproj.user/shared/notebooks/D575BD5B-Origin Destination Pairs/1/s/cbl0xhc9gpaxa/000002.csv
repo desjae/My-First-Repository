@@ -1,0 +1,4 @@
+"0","```r
+summary(OD_table)
+sum(OD_table$Trips, na.rm = TRUE)
+```"

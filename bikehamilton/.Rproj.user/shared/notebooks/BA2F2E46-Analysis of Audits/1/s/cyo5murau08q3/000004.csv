@@ -1,0 +1,4 @@
+"0","```r
+ggplot(data = audit_pair_8605) + 
+  geom_bar(mapping = aes(x = B.Wayfinding))
+```"

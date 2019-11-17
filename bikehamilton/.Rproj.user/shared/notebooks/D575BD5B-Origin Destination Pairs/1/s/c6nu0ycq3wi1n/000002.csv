@@ -1,0 +1,9 @@
+"0","```r
+OD_table <- OD_table %>% 
+  left_join(transmute(st_drop_geometry(TTS_Dataframe.sf), # Drop the geometry, it makes `distinct` misbehave
+                      Zone_Origin, 
+                      X.Origin, 
+                      Y.Origin) %>% 
+              distinct(Zone_Origin, .keep_all = TRUE), 
+            by = \"Zone_Origin\")
+```"

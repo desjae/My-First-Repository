@@ -1,0 +1,6 @@
+"0","```r
+centroid_coordinates <- st_coordinates(hamilton_centroids.sf)
+centroid_coordinates <- data.frame(GTA06 = hamilton_centroids.sf$GTA06,
+                                   GTA06_Dest = hamilton_centroids.sf$GTA06,
+                                   centroid_coordinates)
+```"

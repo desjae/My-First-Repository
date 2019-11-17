@@ -1,0 +1,15 @@
+"0","```r
+OD_Cycle_Hamilton.sf <- OD_Cycle.sf %>% 
+  left_join(centroid_coordinates, by = \"GTA06\") %>% 
+  rename(GTA06_Dest = GTA06_Dest.x) %>%
+  left_join(centroid_coordinates, by = \"GTA06_Dest\") %>%
+  transmute(GTA06 = GTA06.x, 
+            GTA06_Dest, 
+            Trips,
+            X.Origin = X.x,
+            Y.Origin = Y.x,
+            X.Destination = X.y,
+            Y.Destination = Y.y)
+```"
+"1","Column `GTA06` joining factors with different levels, coercing to character vectorColumn `GTA06_Dest` joining factors with different levels, coercing to character vector
+"

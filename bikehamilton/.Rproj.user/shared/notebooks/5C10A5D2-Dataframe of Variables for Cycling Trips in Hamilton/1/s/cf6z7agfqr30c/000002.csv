@@ -1,0 +1,4 @@
+"0","```r
+ggplot(data = hamilton_ct.sf) + 
+  geom_sf(aes(fill = MedianIncome))
+```"

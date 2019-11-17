@@ -1,0 +1,5 @@
+"0","```r
+mean(Bicycle_Trips_Hamilton.sf$Distance_Centroids, trim = 0, na.rm = TRUE)
+```"
+"1","[1] 2.808739
+"

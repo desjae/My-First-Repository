@@ -1,0 +1,17 @@
+"0","```r
+```r
+```r
+ggplot(data = hamilton_tts) +
+  geom_sf(color = \gray\) +
+  geom_segment(data = filter(OD_Cycle_Hamilton.sf, GTA06 == \5052\|GTA06_Dest == \5114\),
+               aes(x = X.Origin, y = Y.Origin, 
+                   xend = X.Destination, yend = Y.Destination, 
+                   colour = Trips, size = Trips), 
+               arrow = arrow(length = unit(0.25, \cm\)),
+               alpha = 0.5) +  
+  scale_color_gradient(low = \yellow\, high = \red\) +
+  theme_tufte() +
+  theme(panel.grid.major = element_line(colour = \white\))
+```
+```
+```"

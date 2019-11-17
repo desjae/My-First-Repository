@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573662898706.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "280487796",
+    "id" : "E82267DF",
+    "lastKnownWriteTime" : 1573663786,
+    "last_content_update" : 1573663786917,
+    "path" : "~/Documents/GitHub/Correlates-of-Cycling-Flows-Hamilton/bikehamilton/vignettes/bikehamilton-vignette.Rmd",
+    "project_path" : "vignettes/bikehamilton-vignette.Rmd",
+    "properties" : {
+        "cursorPosition" : "34,19",
+        "last_setup_crc32" : "",
+        "scrollLine" : "25"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

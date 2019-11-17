@@ -1,0 +1,4 @@
+"0","```r
+hamilton_TTS_Orig <- read_csv(\"TTSOrigin_Cycle.csv\", 
+    col_types = cols(GTA06 = col_character()))
+```"

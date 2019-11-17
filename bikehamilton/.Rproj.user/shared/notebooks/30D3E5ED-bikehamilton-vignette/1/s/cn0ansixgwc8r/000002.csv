@@ -1,0 +1,2 @@
+"0","ggplot(data = bicycle_trips) + "
+"0","  geom_bar(mapping = aes(x = Trips))"

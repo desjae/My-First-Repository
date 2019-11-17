@@ -1,0 +1,19 @@
+Package: bikehamilton
+Type: Package
+Title: Cycling Routes in Hamilton (Levels of Comfort)
+Version: 0.1.0
+Author: Elise Desjardins
+Maintainer: Elise Desjardins <desjae@mcmaster.ca>
+Description: This package feature different cycling routes from points of interest
+            in Hamilton, Ontario based on level of comfort. Routes are categorized as
+            fast (most contact with traffic), balanced (some contact with traffic), and
+            quiet (minimal contact with traffic).
+License: CC0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    tidyverse
+VignetteBuilder: knitr

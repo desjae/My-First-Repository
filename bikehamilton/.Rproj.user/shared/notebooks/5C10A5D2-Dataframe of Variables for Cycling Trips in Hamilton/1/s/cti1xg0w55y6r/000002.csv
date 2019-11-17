@@ -1,0 +1,4 @@
+"0","```r
+hamilton <- hamilton%>% 
+  mutate(GTA06 = as.character(GTA06))
+```"

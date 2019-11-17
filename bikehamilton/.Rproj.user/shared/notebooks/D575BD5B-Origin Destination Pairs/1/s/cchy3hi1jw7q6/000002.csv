@@ -1,0 +1,3 @@
+"0","```r
+hamilton <- hamilton %>% drop_na()
+```"

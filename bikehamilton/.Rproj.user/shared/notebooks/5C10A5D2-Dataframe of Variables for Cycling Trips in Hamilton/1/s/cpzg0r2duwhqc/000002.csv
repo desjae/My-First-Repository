@@ -1,0 +1,3 @@
+"0","```r
+hamilton_taz.sf <- st_buffer(hamilton_taz.sf, 0)
+```"

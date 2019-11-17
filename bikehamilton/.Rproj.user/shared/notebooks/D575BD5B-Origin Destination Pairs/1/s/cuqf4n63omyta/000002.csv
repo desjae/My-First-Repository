@@ -1,0 +1,4 @@
+"0","```r
+OD_table <- expand.grid(Zone_Destination = junk$GTA06, Zone_Origin = junk$GTA06) %>%
+  transmute(Zone_Origin, Zone_Destination)
+```"

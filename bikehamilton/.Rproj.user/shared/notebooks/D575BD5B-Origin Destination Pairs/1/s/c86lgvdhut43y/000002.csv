@@ -1,0 +1,4 @@
+"0","```r
+summary(TTS_Dataframe.sf$Trips)
+sum(TTS_Dataframe.sf$Trips, na.rm = FALSE)
+```"

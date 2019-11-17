@@ -1,0 +1,4 @@
+"0","```r
+ggplot(data = hamilton) + 
+  geom_sf(aes(fill = Over65))
+```"

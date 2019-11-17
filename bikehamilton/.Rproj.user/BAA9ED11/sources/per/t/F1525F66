@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1573664033540.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3273962305",
+    "id" : "F1525F66",
+    "lastKnownWriteTime" : 1573664185,
+    "last_content_update" : 1573664185,
+    "path" : "~/Documents/GitHub/Correlates-of-Cycling-Flows-Hamilton/bikehamilton/man/bicycle_trips.Rd",
+    "project_path" : "man/bicycle_trips.Rd",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

@@ -1,0 +1,6 @@
+"0","trips = bicycle_trips$Trips    # the number of trips per origin-destination pair "
+"0","mean(trips)                    # apply the mean function "
+"1","[1]"
+"1"," 46.37755"
+"1","
+"

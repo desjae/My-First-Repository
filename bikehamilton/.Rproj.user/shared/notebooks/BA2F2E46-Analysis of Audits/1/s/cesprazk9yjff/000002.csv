@@ -1,0 +1,121 @@
+"0","```r
+audit_results <- read_csv(\"Audit_Results.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_1803 <- read_csv(\"Audit_1803.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_4702 <- read_csv(\"Audit_4702.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_5435 <- read_csv(\"Audit_5435.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_6026 <- read_csv(\"Audit_6026.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_7783 <- read_csv(\"Audit_7783.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_7907 <- read_csv(\"Audit_7907.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_8582 <- read_csv(\"Audit_8582.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_8599 <- read_csv(\"Audit_8599.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_8605 <- read_csv(\"Audit_8605.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"
+"0","```r
+audit_pair_8607 <- read_csv(\"Audit_8607.csv\")
+```"
+"1","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Pair_ID = [32mcol_double()[39m,
+  Segment_ID = [32mcol_double()[39m
+)
+See spec(...) for full column specifications.
+"

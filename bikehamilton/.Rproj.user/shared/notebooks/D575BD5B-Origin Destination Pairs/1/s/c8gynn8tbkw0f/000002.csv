@@ -1,0 +1,13 @@
+"0","```r
+rows <- split(df, seq(nrow(df)))
+lines <- lapply(rows, function(row) {
+    lmat <- matrix(unlist(row[3:6]), ncol = 2, byrow = TRUE)
+    st_linestring(lmat)
+  })
+lines <- st_sfc(lines)
+lines_sf <- st_sf(\"Zone_Origin\" = df$Zone_Origin, 
+                  \"Zone_Destination\" = df$Zone_Destination,
+                  \"mod21_residuals\" = df$mod21_residuals,
+                  'geometry' = lines,
+                  crs = 4326)
+```"

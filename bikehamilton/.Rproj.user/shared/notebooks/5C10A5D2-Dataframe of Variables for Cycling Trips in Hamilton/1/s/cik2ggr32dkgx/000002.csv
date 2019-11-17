@@ -1,0 +1,4 @@
+"0","```r
+hamilton_census <- read_csv(\"census_Hamilton.csv\", 
+    col_types = cols(CTUID = col_character()))
+```"

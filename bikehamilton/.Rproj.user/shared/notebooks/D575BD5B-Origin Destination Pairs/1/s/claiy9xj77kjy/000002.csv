@@ -1,0 +1,12 @@
+"0","```r
+hamilton_tts <- hamilton_tts %>% mutate(GTA06 = as.character(GTA06))
+
+Trips_Origin <- TTS_Dataframe.sf %>% st_drop_geometry () %>%
+  transmute(GTA_06 = Zone_Origin, Trips) %>% 
+  group_by(GTA_06) %>% 
+  summarize(Total_Trips_Origin = sum(Trips))
+
+Trips_Destination <- TTS_Dataframe.sf %>% st_drop_geometry () %>%
+  transmute(GTA_06 = Zone_Destination, Trips) %>% 
+  group_by(GTA_06) %>% summarize(Total_Trips_Destination = sum(Trips))
+```"

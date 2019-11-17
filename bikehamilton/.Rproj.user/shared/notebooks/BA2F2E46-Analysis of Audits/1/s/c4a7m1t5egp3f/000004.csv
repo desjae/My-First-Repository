@@ -1,0 +1,4 @@
+"0","```r
+ggplot(data = audit_results) + 
+  geom_bar(mapping = aes(x = B.Maintenance))
+```"

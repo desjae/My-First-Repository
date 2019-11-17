@@ -1,0 +1,4 @@
+"0","```r
+OD_table <- OD_table %>%
+  mutate(log_Trips = ifelse(Trips != 0, log(Trips), 0))
+```"

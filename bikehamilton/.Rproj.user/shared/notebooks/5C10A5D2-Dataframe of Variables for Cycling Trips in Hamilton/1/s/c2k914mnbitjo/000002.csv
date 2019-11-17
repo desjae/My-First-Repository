@@ -1,0 +1,5 @@
+"0","```r
+st_crs(hamilton_ct.sf) == st_crs(hamilton_taz.sf)
+```"
+"1","[1] TRUE
+"

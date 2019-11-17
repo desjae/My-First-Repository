@@ -1,0 +1,6 @@
+"0","```r
+leaflet(data = st_transform(hamilton_tts, crs = 4326)) %>%
+  #addPolygons() %>%
+  addTiles() %>%
+  addPolylines(data = lines_sf) # This bit is not working.
+```"

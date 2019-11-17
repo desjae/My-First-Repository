@@ -1,0 +1,24 @@
+---
+title: "bicycle_trips"
+output: html_notebook
+---
+
+To begin, I will clear workspace:
+```{r}
+rm(list = ls())
+```
+
+Next, I will load the packages that I will use for preprocessing and analysis:
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+bicycle_trips <- read_excel("bicycle_trips.xlsx")
+```
+
+```{r}
+save(bicycle_trips, file = "bicycle_trips.RData")
+```
+

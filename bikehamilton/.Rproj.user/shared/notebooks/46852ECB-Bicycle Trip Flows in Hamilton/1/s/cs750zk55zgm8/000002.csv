@@ -1,0 +1,79 @@
+"0","```r
+library(tidyverse)
+library(sf)
+library(readr)
+library(ggthemes)
+library(ggmap)
+library(plotly)
+library(gdistance)
+```"
+"1","Loading required package: raster
+
+Attaching package: ‘raster’
+
+The following object is masked from ‘package:plotly’:
+
+    select
+
+The following object is masked from ‘package:dplyr’:
+
+    select
+
+The following object is masked from ‘package:tidyr’:
+
+    extract
+
+Loading required package: igraph
+
+Attaching package: ‘igraph’
+
+The following object is masked from ‘package:raster’:
+
+    union
+
+The following object is masked from ‘package:plotly’:
+
+    groups
+
+The following objects are masked from ‘package:dplyr’:
+
+    as_data_frame, groups, union
+
+The following objects are masked from ‘package:purrr’:
+
+    compose, simplify
+
+The following object is masked from ‘package:tidyr’:
+
+    crossing
+
+The following object is masked from ‘package:tibble’:
+
+    as_data_frame
+
+The following objects are masked from ‘package:stats’:
+
+    decompose, spectrum
+
+The following object is masked from ‘package:base’:
+
+    union
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following object is masked from ‘package:tidyr’:
+
+    expand
+
+
+Attaching package: ‘gdistance’
+
+The following object is masked from ‘package:igraph’:
+
+    normalize
+"
+"0","```r
+library(dplyr)
+```"

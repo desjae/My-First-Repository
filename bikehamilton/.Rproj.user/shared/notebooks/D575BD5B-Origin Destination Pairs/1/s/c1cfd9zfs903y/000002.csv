@@ -1,0 +1,7 @@
+"0","```r
+OD_table <- OD_table %>% 
+  left_join(select(TTS_Dataframe.sf, Zone_Origin, Zone_Destination, Trips), 
+            by = c(\"Zone_Origin\" = \"Zone_Origin\",
+                   \"Zone_Destination\" = \"Zone_Destination\")) %>%
+  transmute(Zone_Origin, Zone_Destination, Trips = replace_na(Trips, 0))
+```"

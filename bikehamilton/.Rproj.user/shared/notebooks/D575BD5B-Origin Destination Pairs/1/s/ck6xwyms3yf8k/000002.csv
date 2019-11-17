@@ -1,0 +1,7 @@
+"0","```r
+OD_table <- OD_table %>% 
+  left_join(dplyr::select(OD_Cycle_Hamilton.sf, GTA06, GTA06_Dest, Trips), 
+            by = c(\"Zone_Origin\" = \"GTA06\",
+                   \"Zone_Destination\" = \"GTA06_Dest\")) %>%
+  transmute(Zone_Origin, Zone_Destination, Trips = replace_na(Trips, 0))
+```"
