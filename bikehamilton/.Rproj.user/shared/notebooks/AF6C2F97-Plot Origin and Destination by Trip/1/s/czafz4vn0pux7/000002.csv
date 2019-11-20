@@ -1,6 +1,0 @@
-"0","```r
-df_tc <- read_excel(\"Trip by Cycle 2016.xlsx\")
-df_tm <- read_excel(\"Trip by Mode Frequency 2016.xlsx\")
-```"
-"1","Error: `path` does not exist: ‘Trip by Mode Frequency 2016.xlsx’
-"

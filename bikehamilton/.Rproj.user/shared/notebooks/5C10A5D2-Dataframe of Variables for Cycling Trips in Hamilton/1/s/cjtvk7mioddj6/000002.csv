@@ -1,3 +1,0 @@
-"0","```r
-save(Bicycle_Trips_Hamilton.sf, file = \"Bicycle_Trips_Hamilton.Rdata\")
-```"

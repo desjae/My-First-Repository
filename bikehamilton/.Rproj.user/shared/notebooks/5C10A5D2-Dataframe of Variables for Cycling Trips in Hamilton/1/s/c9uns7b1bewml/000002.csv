@@ -1,3 +1,0 @@
-"0","```r
-junk.sf <- subset(junk.sf, select = -c(2:7))
-```"

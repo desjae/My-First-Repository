@@ -1,5 +1,0 @@
-"0","```r
-hamilton_centroids.sf <- st_centroid(hamilton_tts)
-```"
-"1","st_centroid assumes attributes are constant over geometries of x
-"

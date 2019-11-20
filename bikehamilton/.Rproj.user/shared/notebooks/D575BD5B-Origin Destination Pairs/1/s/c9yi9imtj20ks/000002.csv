@@ -1,3 +1,0 @@
-"0","```r
-mod21_pred <- TTS_Dataframe.sf$Trips - mod21_residuals
-```"

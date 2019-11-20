@@ -1,3 +1,0 @@
-"0","```r
-Trips <- full_join(Trips_Origin, Trips_Destination, by = \"GTA_06\")
-```"

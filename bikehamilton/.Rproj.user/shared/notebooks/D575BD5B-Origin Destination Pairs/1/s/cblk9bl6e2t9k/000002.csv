@@ -1,8 +1,0 @@
-"0","```r
-df <- TTS_Dataframe.sf %>% 
-  st_drop_geometry() %>% 
-  transmute(Zone_Origin, Zone_Destination, 
-            X.Origin, Y.Origin, 
-            X.Destination, Y.Destination,
-            mod21_residuals)
-```"

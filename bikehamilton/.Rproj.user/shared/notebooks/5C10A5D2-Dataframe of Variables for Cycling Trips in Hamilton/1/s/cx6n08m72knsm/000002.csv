@@ -1,6 +1,0 @@
-"0","```r
-centroid_TAZs <- read_csv(\"Coordinates_Hamilton.csv\", 
-    col_types = cols(GTA06 = col_character()))
-```"
-"1","Missing column names filled in: 'X1' [1]
-"

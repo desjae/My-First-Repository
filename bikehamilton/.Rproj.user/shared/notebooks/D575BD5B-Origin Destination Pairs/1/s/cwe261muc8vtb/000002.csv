@@ -1,5 +1,0 @@
-"0","```r
-Zones_with_trips <- c(OD_Cycle_Hamilton.sf$GTA06, OD_Cycle_Hamilton.sf$GTA06_Dest) 
-Zones_with_trips <- data.frame(GTA06 = Zones_with_trips) %>%
-  distinct()
-```"

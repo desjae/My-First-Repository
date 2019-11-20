@@ -1,5 +1,0 @@
-"0","```r
-plot(Bicycle_Trips_Hamilton.sf)
-```"
-"1","plotting the first 9 out of 36 attributes; use max.plot = 36 to plot all
-"

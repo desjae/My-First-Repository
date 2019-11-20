@@ -1,3 +1,0 @@
-"0","```r
-Bicycle_Trips_Hamilton.sf <- subset(Bicycle_Trips_Hamilton.sf, select = -c(4:5))
-```"

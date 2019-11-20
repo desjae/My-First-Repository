@@ -1,8 +1,0 @@
-"0","```r
-model21 <- zelig(Trips ~ Population_i + Years20to34_i + Years35to49_i + Years50to64_i + Over65_i + Postsecondary_i + MedianIncome_i + Employed_i + UnemploymentRate_i + Commercial_i + Residential_i + Institutions_i + Office_i + OpenSpace_i + Agriculture_i + Transportation_i + Industrial_i + 
-                 Population_j + Years20to34_j + Years35to49_j + Years50to64_j + Over65_j + Postsecondary_j + MedianIncome_j + Employed_j + UnemploymentRate_j + Commercial_j + Residential_j + Institutions_j + Office_j + OpenSpace_j + Agriculture_j + Transportation_j + Industrial_j,
-                 model = \"poisson\",
-                 data = TTS_Dataframe.sf, 
-                 cite = FALSE)
-summary(model21)
-```"

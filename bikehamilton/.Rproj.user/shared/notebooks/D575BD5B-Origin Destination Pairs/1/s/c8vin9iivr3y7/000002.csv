@@ -1,3 +1,0 @@
-"0","```r
-junk_w <- nb2mat(junk_nb, style = \"B\")
-```"

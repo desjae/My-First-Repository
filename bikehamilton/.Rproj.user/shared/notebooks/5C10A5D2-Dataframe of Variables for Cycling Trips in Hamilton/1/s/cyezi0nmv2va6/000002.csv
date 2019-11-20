@@ -1,3 +1,0 @@
-"0","```r
-colnames(centroid_TAZs) <- c(\"Zone_Destination\", \"X.Destination\", \"Y.Destination\")
-```"

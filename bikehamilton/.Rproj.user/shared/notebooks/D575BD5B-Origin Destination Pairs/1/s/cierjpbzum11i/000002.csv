@@ -1,3 +1,0 @@
-"0","```r
-junk <- st_as_sf(left_join(rename(Trips, GTA06 = GTA_06), hamilton_tts, by = \"GTA06\"))
-```"

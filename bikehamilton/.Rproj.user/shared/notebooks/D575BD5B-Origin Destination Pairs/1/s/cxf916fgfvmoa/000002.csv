@@ -1,3 +1,0 @@
-"0","```r
-junk_mem <- mem(junk_listw_net, MEM.autocor = \"non-null\")
-```"

@@ -1,4 +1,0 @@
-"0","```r
-ggplot(data = Bicycle_Trips_DataFrame.sf) + 
-  geom_sf(aes(fill = Trips))
-```"

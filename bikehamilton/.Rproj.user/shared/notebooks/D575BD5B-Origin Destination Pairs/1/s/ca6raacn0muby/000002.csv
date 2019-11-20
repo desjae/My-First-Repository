@@ -1,5 +1,0 @@
-"0","```r
-ggplot(data = Trips, aes(x = Total_Trips_Origin, y = Total_Trips_Destination)) +
-  geom_point() +
-  geom_abline(intercept = 0, slope = 1, color = \"blue\")
-```"

@@ -1,3 +1,0 @@
-"0","```r
-junk_nb <- poly2nb(as(junk, \"Spatial\"), queen = TRUE)
-```"

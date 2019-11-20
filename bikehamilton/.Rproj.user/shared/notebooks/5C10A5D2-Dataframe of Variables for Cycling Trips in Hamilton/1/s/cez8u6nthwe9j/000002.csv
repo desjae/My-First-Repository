@@ -1,3 +1,0 @@
-"0","```r
-hamilton_ct.sf <- left_join(hamilton_ct.sf, hamilton_census, by = \"CTUID\")
-```"

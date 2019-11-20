@@ -1,4 +1,0 @@
-"0","```r
-audit_results %>%
-  mutate_all(as.character)
-```"

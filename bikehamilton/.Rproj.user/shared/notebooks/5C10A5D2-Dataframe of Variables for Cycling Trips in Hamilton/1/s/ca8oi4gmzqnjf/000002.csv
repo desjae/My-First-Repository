@@ -1,3 +1,0 @@
-"0","```r
-save(Bicycle_Trips_Hamilton_COND.sf, file = \"COND_Bicycle_Trips_Hamilton.Rdata\")
-```"

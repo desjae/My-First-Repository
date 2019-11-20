@@ -1,5 +1,0 @@
-"0","```r
-TTS_Dataframe.sf <- TTS_Dataframe.sf %>%
-  mutate(mod21_residuals = ifelse(mod21_residuals <= 0, \"Negative\", \"Positive\"),
-         mod21_residuals = factor(mod21_residuals))
-```"

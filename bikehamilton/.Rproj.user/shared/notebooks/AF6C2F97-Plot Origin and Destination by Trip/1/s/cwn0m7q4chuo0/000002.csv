@@ -1,3 +1,0 @@
-"0","```r
-(df_tm$Cycle / df_tm$Total) * 100
-```"

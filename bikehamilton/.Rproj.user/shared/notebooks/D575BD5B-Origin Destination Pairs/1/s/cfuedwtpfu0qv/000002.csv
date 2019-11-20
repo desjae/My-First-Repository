@@ -1,3 +1,0 @@
-"0","```r
-junk_w_net <- kronecker(junk_w, diag(98)) + kronecker(diag(98), junk_w)
-```"

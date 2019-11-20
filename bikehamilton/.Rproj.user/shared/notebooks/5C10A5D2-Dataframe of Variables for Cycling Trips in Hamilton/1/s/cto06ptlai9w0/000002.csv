@@ -1,3 +1,0 @@
-"0","```r
-Bicycle_Trips_Hamilton_COND.sf <- Bicycle_Trips_Hamilton.sf %>% filter(!is.na(Trips))
-```"

@@ -1,3 +1,0 @@
-"0","```r
-junk <- junk.sf %>% st_set_geometry(NULL)
-```"

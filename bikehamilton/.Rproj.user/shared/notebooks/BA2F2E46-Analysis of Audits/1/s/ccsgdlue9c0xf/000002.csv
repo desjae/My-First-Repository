@@ -1,4 +1,0 @@
-"0","```r
-ggplot(data = audit_pair_7907) + 
-  geom_bar(mapping = aes(x = A.Comfortability, fill = A.CyclingFacility))
-```"

@@ -1,3 +1,0 @@
-"0","```r
-Trips <- Trips %>% mutate(Total_Trips_Origin = replace_na(Total_Trips_Origin, 0), Total_Trips_Destination = replace_na(Total_Trips_Destination, 0))
-```"

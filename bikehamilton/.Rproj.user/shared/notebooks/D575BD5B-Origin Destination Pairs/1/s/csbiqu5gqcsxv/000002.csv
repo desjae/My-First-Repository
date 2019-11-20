@@ -1,4 +1,0 @@
-"0","```r
-load(\"Hamilton_Bicycle_Trips.Rdata\")
-load(\"Hamilton_ZonalAttributes.Rdata\")
-```"

@@ -1,4 +1,0 @@
-"0","```r
-ggplot(data = hamiltonTTS_Orig.sf) +
-  geom_sf(aes(fill = CycleTrips))
-```"

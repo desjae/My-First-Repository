@@ -1,5 +1,0 @@
-"0","```r
-ggplot() + 
-  geom_sf(data = hamilton_taz.sf, color = \"black\", fill = \"white\") + 
-  geom_sf(data = hamilton_ct.sf, color = \"blue\", fill = NA) 
-```"

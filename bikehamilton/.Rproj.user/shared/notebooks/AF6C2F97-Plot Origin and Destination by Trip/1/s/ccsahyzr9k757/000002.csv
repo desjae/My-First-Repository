@@ -1,3 +1,0 @@
-"0","```r
-gtha <- st_read(\"tts06_83_region.shp\")
-```"

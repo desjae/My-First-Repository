@@ -1,3 +1,0 @@
-"0","```r
-colnames(Bicycle_Trips_Hamilton.sf) <- c(\"Zone_Origin\", \"Trips\", \"Zone_Destination\", \"X.Origin\", \"Y.Origin\", \"X.Destination\", \"Y.Destination\", \"Population_i\", \"Under14_i\", \"Years20to34_i\", \"Years35to49_i\", \"Years50to64_i\", \"Over65_i\", \"Postsecondary_i\", \"Secondary_i\", \"None_i\", \"MedianIncome_i\", \"Employed_i\", \"Unemployed_i\", \"UnemploymentRate_i\", \"geometry\")
-```"

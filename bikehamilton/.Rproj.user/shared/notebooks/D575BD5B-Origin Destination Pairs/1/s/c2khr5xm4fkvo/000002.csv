@@ -1,6 +1,0 @@
-"0","```r
-ggplot(data = data.frame(Observed = TTS_Dataframe.sf$Trips, Predicted = mod21_pred),
-       aes(x = Observed, y = Predicted)) +
-  geom_point() +
-  geom_abline(intercept = 0, slope =  1, color = \"gray\")
-```"

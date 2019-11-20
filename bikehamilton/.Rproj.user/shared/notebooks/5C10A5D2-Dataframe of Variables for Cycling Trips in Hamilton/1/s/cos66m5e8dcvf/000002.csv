@@ -1,3 +1,0 @@
-"0","```r
-Bicycle_Trips_DataFrame.sf <- subset(Bicycle_Trips_DataFrame.sf, select = -c(3:9))
-```"

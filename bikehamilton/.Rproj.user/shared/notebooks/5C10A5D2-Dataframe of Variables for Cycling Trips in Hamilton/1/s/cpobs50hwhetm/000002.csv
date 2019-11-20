@@ -1,3 +1,0 @@
-"0","```r
-save(hamilton, file = \"Hamilton_ZonalAttributes.Rdata\")
-```"
