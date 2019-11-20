@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>bikehamilton-vignette</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+<style type="text/css">
+  p.abstract{
+    text-align: center;
+    font-weight: bold;
+  }
+  div.abstract{
+    margin: auto;
+    width: 90%;
+  }
+</style>
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">bikehamilton-vignette</h1>
+<div class="abstract">
+<p class="abstract">Abstract</p>
+This vignette documents a few different ways that the package and associated dataset can be used, including data analysis. The dataset includes the number of bicycle trips that were recorded in Hamilton through the Transportation Tomorrow Survey.
+</div>
+
+
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>This vignette illustrates the use of the <code>bicycle_trips</code> dataset with some examples of descriptive statistics. The dataset includes the number of bicycle trips that were recorded in Hamilton, as well as the zones of origin and zones of destination. The dataset includes the total number of bicycle trips that occurred between one zone of origin and one zone of destination. These are essentially pairs, namely origin-destination pairs, that generate a certain number of trips (included in the dataset in the <code>Trips</code> column). It documents a few simple ways of manipulating and analyzing the data. The data was collected by the University of Toronto’s Data Management Group in the 2016 offering of the Transportation Tomorrow Survey [<a href="http://dmg.utoronto.ca/transportation-tomorrow-survey/tts-introduction" class="uri">http://dmg.utoronto.ca/transportation-tomorrow-survey/tts-introduction</a>].</p>
+</div>
+<div id="load-the-packages" class="section level2">
+<h2>Load the Packages</h2>
+<p>Load the packages used in this vignette:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(bikehamilton)
+<span class="kw">library</span>(tidyverse)
+<span class="co">#&gt; ── Attaching packages ─── tidyverse 1.2.1 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.2.1     ✔ purrr   0.3.2</span>
+<span class="co">#&gt; ✔ tibble  2.1.3     ✔ dplyr   0.8.3</span>
+<span class="co">#&gt; ✔ tidyr   1.0.0     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   1.3.1     ✔ forcats 0.4.0</span>
+<span class="co">#&gt; ── Conflicts ────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></code></pre></div>
+</div>
+<div id="load-the-dataset" class="section level2">
+<h2>Load the Dataset</h2>
+<p>To load the data, use the function <code>data()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(<span class="st">&quot;bicycle_trips&quot;</span>)</code></pre></div>
+<p>To inspect the dataframe, use the function <code>summary()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(bicycle_trips)
+<span class="co">#&gt;   GTA06_Origin  GTA06_Destination     Trips       </span>
+<span class="co">#&gt;  Min.   :5005   Min.   :4042      Min.   :  8.00  </span>
+<span class="co">#&gt;  1st Qu.:5143   1st Qu.:5136      1st Qu.: 23.00  </span>
+<span class="co">#&gt;  Median :5174   Median :5174      Median : 36.00  </span>
+<span class="co">#&gt;  Mean   :5162   Mean   :5150      Mean   : 46.38  </span>
+<span class="co">#&gt;  3rd Qu.:5197   3rd Qu.:5197      3rd Qu.: 55.00  </span>
+<span class="co">#&gt;  Max.   :5252   Max.   :5252      Max.   :335.00</span></code></pre></div>
+<p>The data frame consists of 3 variables. The variable definitions can be consulted in the help file:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?bicycle_trips</code></pre></div>
+</div>
+<div id="what-is-the-average-number-of-bicycle-trips-per-origin-destination-pair" class="section level2">
+<h2>What is the average number of bicycle trips per origin-destination pair?</h2>
+<p>A quick glance at the dataset will reveal that there is a lot of variation in the number of trips that occur between each origin-destination pair. Some origin-destination pairs have over 100 trips, while many have fewer than 20. To calculate the average number of trips, we use the <code>mean</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">trips =<span class="st"> </span>bicycle_trips<span class="op">$</span>Trips    <span class="co"># the number of trips per origin-destination pair </span>
+<span class="kw">mean</span>(trips)                    <span class="co"># apply the mean function </span>
+<span class="co">#&gt; [1] 46.37755</span></code></pre></div>
+</div>
+<div id="what-is-the-distribution-of-bicycle-trips-in-hamilton" class="section level2">
+<h2>What is the distribution of bicycle trips in Hamilton?</h2>
+<p>Now that we know the average number of bicycle trips, it is also important to know how the actual number of trips between each origin-destination pair compares to the average number of bicycle trips. We now know that the average number of bicycle trips is approximately 46, but we don’t know if most of the origin-destination pairs are below or above the average. To answer this question, we can create a histogram of the <code>Trips</code> variable to generate counts:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> bicycle_trips) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Trips))</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>We see that most origin-destination pairs produce fewer than 100 trips, with many below the average. This gives us some useful information for further analysis. Why do some origin-destination pairs generate very large number of trips (greater than 200), compared to the average? Why do some origin-destination pairs generate very few trips, less than the average?</p>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
