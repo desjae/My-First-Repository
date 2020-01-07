@@ -1,0 +1,338 @@
+---
+title: Origins and Destinations of Bicycle Trips in Hamilton, Ontario
+author:
+  - name: Elise Desjardins
+    email: desjae@mcmaster.ca
+    affiliation: Master of Public Health 
+    footnote: Corresponding Author
+  - name: Antonio Paez
+    email: paezha@mcmaster.ca
+    affiliation: School of Geography and Earth Sciences
+address:
+  - code: Master of Public Health 
+    address: Department of Health Research Methods, Evidence, and Impact, McMaster University, 1280 Main Street West, Hamilton, Ontario, L8S 4K1
+  - code: School of Geography and Earth Sciences
+    address: School of Geography and Earth Sciences, McMaster University, 1280 Main Street West, Hamilton, Ontario, L8S 4K1
+abstract: |
+  Mid-sized cities like Hamilton, Ontario are facing a number of interconnected urban issues that affect the health and well-being of residents. Sedentary lifestyles and inadequate physical activity are major public health concerns not only in Hamilton but across Canada. Promoting and supporting active transportation has been identified as an opportunity to address these issues. The *Transportation Tomorrow Survey* is a collection of data information about urban travel for commuting purposes in Southern Ontario, Canada. According to the latest survey in 2016, bicycling currently represents approximately 1.2% of all trips made in Hamilton. This paper explores preliminary data analysis of the survey results for Hamilton and estimates a spatial interaction model to select sites for bikeability audits. This method has been identified as a useful way to asses the features of the built environment that may promote bicycling in urban areas.
+
+journal: Health & Place
+date: "`r Sys.Date()`"
+bibliography: mybibfile.bib
+#linenumbers: true
+#numbersections: true
+csl: elsevier-harvard.csl
+output: rticles::elsevier_article
+---
+
+_Text based on elsarticle sample manuscript, see [http://www.elsevier.com/author-schemas/latex-instructions#elsarticle](http://www.elsevier.com/author-schemas/latex-instructions#elsarticle)_
+
+
+Origins and Destinations of Bicycle Trips in Hamilton, Ontario 
+==========================
+
+## Introduction
+
+Mid-sized cities like Hamilton, Ontario are facing a number of interconnected urban issues that affect the health and well-being of residents. Sedentary lifestyles and inadequate physical activity are major public health concerns not only in Hamilton but across Canada. The majority of Canadian adults do not meet the daily physical activity guidelines [@statscan2015physact]. Promoting and supporting active transportation has been identified as an opportunity to address these issues, as well as help mid-sized cities meet other goals such as climate change mitigation.
+
+In addition to improving population health, cities across the country have many incentives to promote a growth in bicycling since it supports other urban objectives such as reducing carbon emissions and providing a greater variety of transportation alternatives. This presents a good alignment between public health and urban policy. In order to promote bicycling for transport, cities across the country have invested in different types of infrastructure (such as on-street bicycling facilities, multi-use trails, and bicycle parking), strived to develop connected networks of routes, and delivered public bicycle-sharing programs. The city of Hamilton, Ontario, is a case in point. Since ratification of the city’s first Cycling Master Plan in 2009, all of the above measures have been implemented. 
+
+Bicycling currently represents approximately 1.2% of all trips made in the city according to the latest *Transportation Tomorrow Survey* (*TTS*) from 2016 [@dmg2016tts], which is a two-fold increase from the 2011 TTS results when the mode share of bicycling was only 0.6%. The *Transportation Tomorrow Survey* is a collection of data information about urban travel for commuting purposes in Southern Ontario, Canada. The survey has been carried out every five years since 1986 by the University of Toronto’s Data Management Group. The latest survey was completed by GTHA residents in 2016 and the data from this survey was released in early 2018. The survey collects three categories of travel information: i) household data; ii) demographics; and iii) trip data. The first category includes information such as the number of members in the household, household income, and the number of vehicles available to householders. The second category collects information about employment status and age. The final category, which is included in this paper’s data set, provides data on modes of transport, as well as origins and destinations for trips made by those modes.
+
+This data set is very useful for transportation planners and public health professionals because it provides a general impression of bicycle trips for transportation, including number of trips reported and zones of origin and zones of destination. Such data can be organized into an origin-destination matrix to display the number of bicycle trips going from each origin to each destination. With these variables, it is possible to calculate the number of trips according to particular traffic analysis zones, identify traffic analysis zones that produce zero bicycle trips, as well as visualize bicycle trip flows across the city.
+
+## Methods
+
+This file contains modelling experiments of bicycling trip flows in Hamilton. It uses a data set contained in the `bikehamilton` package. 
+
+### *Explanatory Analysis*
+
+To begin, some explanatory analysis of the data set will describe basic patterns of bicycling trips.
+
+```{r echo=FALSE}
+#library(readr)
+library(zeligverse)
+library(Zelig)
+library(tidyverse)
+library(sf)
+library(ggthemes)
+#library(cyclestreets)
+library(spdep)
+library(adespatial)
+library(units)
+library(tmap)
+library(kableExtra)
+library(formattable)
+library(tinytex)
+library(rticles)
+library(knitr)
+```
+
+```{r echo=FALSE}
+load("Data Cycling Hamilton.RData")
+load("Quietest_Bicycle_Routes.RData")
+load("Fastest_Bicycle_Routes.RData")
+load("Balanced_Bicycle_Routes.RData")
+load("bicycle_trips.RData")
+load("geography_data.RData")
+raw_data_mode <- read_csv("tts-2016-OD-by-Mode.csv")
+```
+
+```{r summary-data, echo=FALSE}
+summary(bicycle_trips)
+```
+The average number of bicycle trips per traffic analysis zone is 46 trips. The maximum number of bicycle trips recorded to or from a traffic analysis zone is 335 trips, while the minimum number is 8 trips. Recall that the data set only includes traffic analysis zones in Hamilton that produced bicycle trips, which is why the minimum is 8 and not 0. 50% of traffic analysis zones reported 36 bicycle trips or less. Finally, it's important to note that 50% of traffic analysis zones reported 36 bicycle trips or less, and 75% of traffic analysis zones produced fewer than 60 bicycle trips. This means that only a small number of traffic analysis produced very large number of bicycle trips.
+
+The average number of trips can also be calculated as follows:
+$$
+\overline{x} = \frac{1}{n} \bigg( \sum_{i=n}^{n} x_i \bigg)
+$$
+
+The `mean function` in R can also calculate the average:
+```{r echo=FALSE}
+trips = bicycle_trips$Trips    # the number of trips per origin-destination pair 
+mean(trips)                    # apply the mean function 
+```
+
+```{r fig-bike-trip-counts, echo=FALSE, fig.cap="\\label{fig:bike-trip-counts} Histogram of the dependent variable: Number of bicycle trips per traffic analysis zone"}
+ggplot(data = bicycle_trips) + 
+  geom_bar(mapping = aes(x = Trips)) +
+  ggtitle("Bicycle Trips per Traffic Analysis Zone")
+```
+The visualization of the data set by histogram shows that very few traffic analysis zones produced more than 100 bicycle trips. Only two traffic analysis zones produced more than 300 trips:
+
+```{r echo=FALSE}
+subset(bicycle_trips, Trips > 300)
+```
+
+The data set reveals that many traffic analysis zones produce bicycle trips, but 75% of them produce fewer than 60 trips. One possible interpretation of this finding is that there is something about the 25% of traffic analysis zones which produced greater than 60 trips that is conducive to bicycling. In particular, the zones that produced over 300 trips look like outliers. It is worthwhile investigating what is happening in those zones that encourages Hamiltonians to make greater numbers of bicycle trips compared to the majority of other traffic analysis zones. The difference may be due to individual-level (e.g., demographics) or community-level (e.g., built environment attributes) factors.
+
+### *Origin-Destination Matrix*
+
+Using the data set, an exhaustive origin-destination table can also be created. The current origin-destination table includes only pairs of zones that had bicycle trips between them, which means that all origin-destination pairs that produced 0 trips are missing. To expand the table to include *all* pairs of zones whether they had bicycle trips between them or not, `expand.grid` can be used for this.
+
+First, it will be helpful to visualize the traffic analysis zones in Hamilton that produced bicycle trips. Isolate zones outside of urban Hamilton have been filtered.
+
+```{r fig-hamilton-zones, echo=FALSE, fig.cap="\\label{fig:hamilton-zones} Map of Hamilton traffic analysis zones that produced bicycle trips"}
+ggplot(data = hamilton) + 
+  ggtitle("Traffic Analysis Zones in Urban Hamilton with Bicycle Trips") +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  geom_sf()
+```
+
+The function `expand.grid` can be used to create an exhaustive origin-destination matrix. To organize the table so that the origins are all sorted in order, `expand.grid` uses first the $Zone_Destination$, then mutates to rearrange columns with the $Zone_Origin$ first. 
+```{r echo=FALSE}
+OD_table <- expand.grid(GTA06_Destination = hamilton$GTA06, GTA06_Origin = hamilton$GTA06) %>%
+  transmute(GTA06_Origin = as.character(GTA06_Origin), GTA06_Destination = as.character(GTA06_Destination))
+```
+
+```{r echo=FALSE}
+OD_bicycle <- raw_data_mode[53820:61818,]
+colnames(OD_bicycle) <- raw_data_mode[53819,]
+OD_bicycle <- transmute(OD_bicycle, 
+                     GTA06_Origin = gta06_orig, 
+                     GTA06_Destination = gta06_dest, 
+                     Trips = as.numeric(total))
+```
+
+```{r echo=FALSE}
+OD_bicycle_hamilton <- OD_bicycle %>% 
+  filter(GTA06_Origin >= 5001 & GTA06_Origin <= 5253 & 
+           GTA06_Destination >= 5001 & GTA06_Destination <= 5253)
+```
+
+```{r echo=FALSE}
+OD_table <- OD_table %>% 
+  left_join(OD_bicycle_hamilton, 
+            by = c("GTA06_Origin" = "GTA06_Origin",
+                   "GTA06_Destination" = "GTA06_Destination")) %>%
+  transmute(GTA06_Origin, GTA06_Destination, Trips = replace_na(Trips, 0))
+```
+
+To visualize the bicycle trip counts in the exhaustive origin-destination matrix, another histogram will be useful:
+```{r fig-bike-trip-pairs, echo = FALSE, fig.cap="\\label{fig:bike-trip-pairs} Histogram of the dependent variable: The number of bicycle trips per origin-destination pair"}
+ggplot(data = OD_table.sf, aes(x = Trips)) + 
+  geom_histogram() +
+  ggtitle("Bicycle Trips per Origin-Destination Pair")
+```
+An overwhelming majority of origin-destination pairs have zero bicycle trips, which reveals that there are many places that Hamiltonians are not travelling by bicycle.
+
+### *Poisson Regression Models*
+
+Poisson regression is a model that is best used for discrete data. Examples of such types of data include counts or rates. Poisson regression models analyze count data by determining which explanatory variables have an effect on a given response variable.  Poisson regression is one example of a Generalized Linear Model (GLM) which follows a distribution other than the normal distribution. The count of such a model is a value that follows the Poisson distribution. It assumes that the expected values can be modeled into a linear form by some unknown parameters. GLM is characterized with three components: i) the distribution of the *dependent variable*, a linear function of a set of *independent variables*, and a *link function* between the dependent variable and its expectation as expressed by the linear function of independent variables. *Independent variables* can include demographics, topography, and built environment attributes of each traffic analysis zone. These variables can be added to the origin-destination matrix so that the data set includes additional information that might help to explain the trip patterns.
+
+This paper will now document the exploration of a spatial interaction model, as well as test for network autocorrelation. The use of Moran's I has been criticized for use in the residuals of a Poisson model, and instead use of the T statistic is recommended [@chun2008modeling, @metulini2018spatial].
+
+### *Estimation of Spatial Interaction Models*
+
+#### Model: Origin and destination variables, with cost variable
+
+```{r echo=FALSE}
+model3 <- zelig(Trips ~ Population.o +
+                  Points_of_Interest.o +
+                  BusStops.o + 
+                  Institutions.o + 
+                  Commercial.o + 
+                  Residential.o + 
+                  Population.d + 
+                  Full_time_jobs.d + 
+                  Part_time_jobs.d +  
+                  Points_of_Interest.d + 
+                  BusStops.d + 
+                  Institutions.d + 
+                  Commercial.d + 
+                  Residential.d +
+                  Topography +
+                  #euclidean_distance,
+                  #fastest_distance,
+                  #fastest_time,
+                  quietest_distance,
+                  #quietest_time,
+                  #balanced_distance,
+                  #balanced_time,
+                 model = "poisson",
+                 data = OD_table.sf, 
+                 cite = FALSE)
+summary(model3)
+```
+
+```{r echo=FALSE}
+model_best <- zelig(Trips ~ Population.o +
+                  Points_of_Interest.o +
+                  BusStops.o + 
+                  Institutions.o + 
+                  Commercial.o + 
+                  Residential.o + 
+                  Population.d + 
+                  Full_time_jobs.d + 
+                  Part_time_jobs.d +  
+                  Points_of_Interest.d + 
+                  BusStops.d + 
+                  Institutions.d + 
+                  Commercial.d + 
+                  Residential.d +
+                  Topography +
+                  quietest_distance,
+                 model = "poisson",
+                 data = OD_table.sf, 
+                 cite = FALSE)
+summary(model_best)
+```
+
+```{r echo=FALSE}
+# Permutation spatial autocorrelation test for generalized models (Jacquin-Gadda et al. 1997). Code by Patuelli et al. The inputs are a model object and a listw object. The code is modified to accept the output of zelig instead of the base glm.
+
+t.test.gadda = function (x, listw){
+	# Calculate Mean and Variance for T statistics.
+	mu <- unlist(fitted(x))
+	y <- unlist(x$data[all.vars(x$formula)[1]])
+	#listw.nb <- listw$neighbours
+	#listw <- nb2listw(listw.nb, style = "C")
+	S <- nb2mat(listw$neighbours, style = "C", zero.policy = FALSE)
+	S0 <- sum(S)
+	S1 <- 2 * sum(S ^ 2)
+	S2 <- 4 * sum(rowSums(S) ^ 2)
+	N <- dim(S)[1]
+	Tval <- crossprod((y - mu), S) %*% (y - mu)
+	m2 <- sum((y - mu) ^ 2) / N
+	m4 <- sum((y - mu) ^ 4) / N
+	#M <- diag(length(e)) - X %*% chol2inv(chol(t(X)%*%X)) %*% t(X)
+	mean <- - ((m2 * S0) / (N - 1))
+	meantwo <- mean ^ 2
+	twomean1 <- N * (m2 ^ 2) * ((N ^ 2 - 3 * N + 3) * S1 - N * S2 + 3 * (S0 ^ 2))
+	twomean2 <- m4 * ((N ^ 2 - N) * S1 - 2 * N * S2 + 6 * (S0 ^ 2))
+	twomeanfrac <- (N - 1) * (N - 2) * (N - 3)
+	twomean <- (twomean1 - twomean2) / twomeanfrac
+	var <- twomean - meantwo
+	z <- (Tval - mean) / var ^ (1 / 2)
+	pvalue <- pnorm(z, lower.tail = FALSE)
+	cat("z = ", z, "p-value = ", pvalue)
+	return(list(mean = mean, var = var, Tval = Tval, z = z, pvalue = pvalue))
+}
+```
+
+Network autorcorrelation in the residuals is not present 
+```{r echo=FALSE}
+model3_gadda <- t.test.gadda(model3, hamilton_listw_net)
+```
+
+```{r echo=FALSE}
+OD_table.sf$Estimated_Trips <- unlist(fitted(model_best))
+OD_table.sf$residuals <- unlist(residuals(model_best))
+```
+
+Finally, by plotting the negative values of the residuals, after removing all origin-destination pairs with zero trips, bicycle trip flows that were under-predicated can be visualized.
+```{r echo=FALSE}
+# Set tmap_mode to "view" for interactive map or to "plot" for static map
+tmap_mode("view")
+
+tm_shape(hamilton) +
+  tm_polygons(popup.vars = FALSE) +
+  tm_shape(OD_table.sf %>% filter(Trips != 0, residuals <= 0)) +
+  tm_lines(col = "residuals", 
+           lwd = 2, 
+           style = "quantile", 
+           popup.vars = c("Trips", "Estimated_Trips", "GTA06_Origin", "GTA06_Destination"), 
+           palette = "OrRd")
+  
+```
+
+Likewise, by plotting the positive values of the residuals, after removing all origin-destination pairs with zero trips, bicycle trip flows that were over-predicated can be visualized.
+```{r echo=FALSE}
+# Set tmap_mode to "view" for interactive map or to "plot" for static map
+tmap_mode("view")
+
+tm_shape(hamilton) +
+  tm_polygons(popup.vars = FALSE) +
+  tm_shape(OD_table.sf %>% filter(Trips != 0, residuals > 0)) +
+  tm_lines(col = "residuals", 
+           lwd = 2, 
+           style = "quantile", 
+           popup.vars = c("Trips", "Estimated_Trips", "GTA06_Origin", "GTA06_Destination"), 
+           palette = "Greens")
+  
+```
+
+Conclusion
+============
+
+With a single data set, a lot of rich information of bicycling behaviour can be gleaned. Although bicycling mode share increased in Hamilton between 2006 and 2011, this paper has demonstrated that there are still many areas in Hamilton where people are not bicycling. This presents opportunity for future research to investigate why bicycle trips are non-existent in these areas. Data analysis has also revealed that there are also areas where a lot of bicycling is occurring, which might mean that there are attributes of these traffic analysis zones that are promoting bicycling for transportation. Again, this presents another area for research in order to understand why Hamiltonians feel encouraged to bike in these areas and how this can be replicated in areas where there are no bicycle trips. Environmental audits to assess the built environment are one method of capturing built environment attributes that could be useful to explore differences between traffic analysis zones with under- and over-predicted bicycle trips.
+
+References {#references .unnumbered}
+==========
+
+@article{statscan2015physact, 
+  title={Household population meeting/not meeting the Canadian physical activity guidelines},
+  author={Statistics Canada}, 
+  year={2015}, 
+}
+
+@article{dmg2016tts, 
+  title={2016 TTS Travel Summary by Ward for the City of Hamilton},
+  author={Data Management Group},
+  publisher={University of Toronto}
+  year={2016}, 
+}
+
+@article{chun2008modeling,
+  title={Modeling network autocorrelation within migration flows by eigenvector spatial filtering},
+  author={Chun, Yongwan},
+  journal={Journal of Geographical Systems},
+  volume={10},
+  number={4},
+  pages={317--344},
+  year={2008},
+  publisher={Springer}
+}
+
+@article{metulini2018spatial,
+  title={A spatial-filtering zero-inflated approach to the estimation of the gravity model of trade},
+  author={Metulini, Rodolfo and Patuelli, Roberto and Griffith, Daniel},
+  journal={Econometrics},
+  volume={6},
+  number={1},
+  pages={9},
+  year={2018},
+  publisher={Multidisciplinary Digital Publishing Institute}
+}
